@@ -5,7 +5,7 @@ const app = express();
 // const fs = require("fs");
 
 const corsOptions = {
-  origin: "https://getvivek.netlify.app", // change this origin as your like
+  origin: "https://vidr-sp.netlify.app", // change this origin as your like
   // origin: "http://localhost:3000",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
@@ -28,7 +28,7 @@ app.get("/get", async (req, res) => {
   let formats = info.formats;
 
   const audioFormats = ytdl.filterFormats(info.formats, "audioonly");
-  // const format = ytdl.chooseFormat(info.formats, { quality: "m4a" });
+  // const format = ytdl.chooseFormat(info.formats, { quality: "136" });
   formats = formats.filter((format) => format.hasAudio === true);
 
   res.send({ title, thumbnail, audioFormats, formats });
@@ -36,7 +36,8 @@ app.get("/get", async (req, res) => {
 
 app.get("/download", async (req, res) => {
   const url = req.query.url;
-  
+  const itag = req.query.itag;
+  const type = req.query.type;
 
   // const info = await ytdl.getInfo(url);
   // const title = info.videoDetails.title;
