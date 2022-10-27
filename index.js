@@ -36,8 +36,7 @@ app.get("/get", async (req, res) => {
 
 app.get("/download", async (req, res) => {
   const url = req.query.url;
-  const itag = req.query.itag;
-  const type = req.query.type;
+  
 
   // const info = await ytdl.getInfo(url);
   // const title = info.videoDetails.title;
