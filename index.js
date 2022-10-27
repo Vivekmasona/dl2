@@ -28,7 +28,7 @@ app.get("/get", async (req, res) => {
   let formats = info.formats;
 
   const audioFormats = ytdl.filterFormats(info.formats, "audioonly");
-  // const format = ytdl.chooseFormat(info.formats, { quality: "140" });
+  // const format = ytdl.chooseFormat(info.formats, { quality: "m4a" });
   formats = formats.filter((format) => format.hasAudio === true);
 
   res.send({ title, thumbnail, audioFormats, formats });
