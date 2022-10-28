@@ -5,7 +5,7 @@ const app = express();
 // const fs = require("fs");
 
 const corsOptions = {
-  origin: "https://vidr-sp.netlify.app", // change this origin as your like
+  origin: "https://getset.netlify.app", // change this origin as your like
   // origin: "http://localhost:3000",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
