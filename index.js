@@ -13,7 +13,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.static("./static"));
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.get("/", (res) => {
   res.render("index.html");
