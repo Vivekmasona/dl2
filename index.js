@@ -23,12 +23,12 @@ app.get("/get", async (req, res) => {
   const url = req.query.url;
   console.log(url);
   const info = await ytdl.getInfo(url);
-  const title = info.AudioDetails.title;
-  const thumbnail = info.AudioDetails.thumbnails[0].url;
+  const title = info.VideoDetails.title;
+  const thumbnail = info.VideoDetails.thumbnails[0].url;
   let formats = info.formats;
 
-  const audioFormats = ytdl.filterFormats(info.formats, "audioonly");
-  // const format = ytdl.chooseFormat(info.formats, { quality: "M4A-DASH" });
+  const audioFormats = ytdl.filterFormats(info.formats, "m4a");
+  // const format = ytdl.chooseFormat(info.formats, { quality: "m4a" });
   formats = formats.filter((format) => format.hasAudio === true);
 
   res.send({ title, thumbnail, audioFormats, formats });
