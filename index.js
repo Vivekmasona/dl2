@@ -24,7 +24,7 @@ app.get("/get", async (req, res) => {
   console.log(url);
   const info = await ytdl.getInfo(url);
   const title = info.VideoDetails.title;
-  const thumbnail = info.VideoDetails.thumbnails[0].url;
+  const thumbnail = info.VideoDetails.thumbnails[19].url;
   let formats = info.formats;
 
   const audioFormats = ytdl.filterFormats(info.formats, "mp3");
