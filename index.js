@@ -27,8 +27,8 @@ app.get("/get", async (req, res) => {
   const thumbnail = info.VideoDetails.thumbnails[19].url;
   let formats = info.formats;
 
-  const audioFormats = ytdl.filterFormats(info.formats, "mp3");
-  // const format = ytdl.chooseFormat(info.formats, { quality: "mp3" });
+  const audioFormats = ytdl.filterFormats(info.formats, "m4a");
+  // const format = ytdl.chooseFormat(info.formats, { quality: "m4a" });
   formats = formats.filter((format) => format.hasAudio === true);
 
   res.send({ title, thumbnail, audioFormats, formats });
