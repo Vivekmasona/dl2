@@ -23,8 +23,8 @@ app.get("/get", async (req, res) => {
   const url = req.query.url;
   console.log(url);
   const info = await ytdl.getInfo(url);
-  const title = info.VideoDetails.title;
-  const thumbnail = info.VideoDetails.thumbnails[19].url;
+  const title = info.AudioDetails.title;
+  const thumbnail = info.AudioDetails.thumbnails[9].url;
   let formats = info.formats;
 
   const audioFormats = ytdl.filterFormats(info.formats, "m4a");
@@ -40,7 +40,7 @@ app.get("/download", async (req, res) => {
   const type = req.query.type;
 
   // const info = await ytdl.getInfo(url);
-  // const title = info.videoDetails.title;
+  // const title = info.AudioDetails.title;
 
   res.header("Content-Disposition", `attachment;  filename="file.${type}"`);
   try {
