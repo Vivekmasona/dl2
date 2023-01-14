@@ -44,7 +44,7 @@ app.get("/download", async (req, res) => {
 
   res.header("Content-Disposition", `attachment;  filename="file.m4a"`);
   try {
-    ytdl(url, { itag }).pipe(res);
+    ytdl(url, { mp3 }).pipe(res);
   } catch (err) {
     console.log(err);
   }
