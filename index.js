@@ -42,7 +42,7 @@ app.get("/download", async (req, res) => {
   // const info = await ytdl.getInfo(url);
   // const title = info.AudioDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="file.${type}"`);
+  res.header("Content-Disposition", `attachment;  filename="file.m4a"`);
   try {
     ytdl(url, { itag }).pipe(res);
   } catch (err) {
