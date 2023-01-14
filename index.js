@@ -23,12 +23,12 @@ app.get("/get", async (req, res) => {
   const url = req.query.url;
   console.log(url);
   const info = await ytdl.getInfo(url);
-  const title = info.AudioDetails.title;
-  const thumbnail = info.AudioDetails.thumbnails[9].url;
+  const title = info.VideoDetails.title;
+  const thumbnail = info.VideoDetails.thumbnails[19].url;
   let formats = info.formats;
 
-  const audioFormats = ytdl.filterFormats(info.formats, "m4a");
-  // const format = ytdl.chooseFormat(info.formats, { quality: "m4a" });
+  const audioFormats = ytdl.filterFormats(info.formats, "mp3");
+  // const format = ytdl.chooseFormat(info.formats, { quality: "mp3" });
   formats = formats.filter((format) => format.hasAudio === true);
 
   res.send({ title, thumbnail, audioFormats, formats });
@@ -36,15 +36,14 @@ app.get("/get", async (req, res) => {
 
 app.get("/download", async (req, res) => {
   const url = req.query.url;
-  const itag = req.query.itag;
-  const type = req.query.type;
+ 
 
   // const info = await ytdl.getInfo(url);
-  // const title = info.AudioDetails.title;
+  // const title = info.videoDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="file.m4a"`);
+  res.header("Content-Disposition", `attachment;  filename="file.${type}"`);
   try {
-    ytdl(url,mp3).pipe(res);
+    ytdl(url, { itag }).pipe(res);
   } catch (err) {
     console.log(err);
   }
